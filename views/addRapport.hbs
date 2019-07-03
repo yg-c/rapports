@@ -1,0 +1,107 @@
+<script type="text/javascript">
+
+    function caTotalFunction() {
+        let caBoissons = Number(document.getElementById("caBoissons").value);
+
+        let caNourriture = Number(document.getElementById("caNourriture").value);
+
+        let caTotal = Number(caNourriture + caBoissons);
+        document.getElementById("caTotal").value = caTotal;
+    }
+
+    var restaurant = document.getElementById('restaurant');
+
+</script>
+<div class="container">
+    <h5 style="text-align:center">Ajouter un rapport</h5>
+    <form action="/addRapport" method="post">
+
+        <form>
+
+            <div class="form-row">
+                <label for="dateRapport">Date du rapport</label>
+                <div class="col-7">
+                <input type="date" id="dateRapport" name="dateRapport" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="restaurant">Restaurant</label>
+                <div class="col-7">
+                <select id="restaurant" name="restaurant">
+                    {{#each restaurants}}
+                        <option value="{{this.idRestaurant}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+                </div>
+            </div>
+
+            <!-- CA -->
+
+            <h3 style="color:slateblue">Chiffre d'affaire</h3>
+
+            <div class="form-row">
+                <label for="caBoissons">Chiffre d'affaire boisson</label>
+                <div class="col-7">
+                <input type="number" step=0.01 id="caBoissons" name="caBoissons" onchange="caTotalFunction()" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="caNourriture">Chiffre d'affaire nourriture</label>
+                <div class="col-7">
+                <input type="number" step=0.01 id="caNourriture" name="caNourriture" onchange="caTotalFunction()" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="caTotal">Chiffre d'affaire total</label>
+                <div class="col-7">
+                <input type="number" step=0.01 id="caTotal" name="caTotal" readonly>
+                </div>
+            </div>
+
+            <!-- Sorties de caisse -->
+            <h3 style="color:slateblue">Sorties de caisse</h3>
+
+            <div class="form-row">
+                <label for="facture77">Facture 7.7%</label>
+                <div class="col-7">
+                <input type="number" step=0.01 id="facture77" name="facture77">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Détails">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="facture25">Facture 2.5%</label>
+                <input type="number" step=0.01 id="facture25" name="facture25">
+            </div>
+
+            <!-- Paiements -->
+            <h3 style="color:slateblue">Moyens de paiement</h3>
+            <div class="form-row">
+                <label for="bons">Bons</label>
+                <input type="number" step=0.01 id="bons" name="bons">
+            </div>
+            <div class="form-row">
+                <label for="chf">CHF</label>
+                <input type="number" step=0.01 id="chf" name="chf">
+            </div>
+            <div class="form-row">
+                <label for="eur">EUR</label>
+                <input type="number" step=0.01 id="eur" name="eur">
+            </div>
+            <div class="form-row">
+                <label for="reka">REKA</label>
+                <input type="number" step=0.01 id="reka" name="reka">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+    </form>
+
+</div>

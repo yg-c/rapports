@@ -1,0 +1,23 @@
+<div class="container">
+    <h5>Liste des rapports</h5>
+    <table class="table">
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Restaurant</th>
+        <th scope="col">Chiffre d'affaire</th>
+        <th scope="col">Détails</th>
+    </tr>
+
+    {{#each rapports}}
+        <form id="rapport" action="detailsRapport" method="get">
+        <tr>
+        <td>{{this.dateRapport}}</td>
+        <td>{{this.restaurantName}}</td>
+        <td>{{this.caTotal}}</td>
+        <td><input  type="hidden" type="number" name="idRapport" value={{this.idRapport}}>
+            <input type="submit" value="Details"></td>
+    </tr>
+        </form>
+    {{/each}}
+    </table>
+</div>
